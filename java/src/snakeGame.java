@@ -1,12 +1,11 @@
 public class snakeGame {
 
     private boolean[][] game;
-    private int[] headPosition;
-    private static int exhaustiveChecks;
+    private int[] headPosition; // size of two, x and y position
+    private static int exhaustiveChecks; // static variable means that you only want to refer to only one.
     private static int recursiveChecks;
 
     // default constructor //
-
     public snakeGame(){
         game = new boolean[1][1];
     }
@@ -14,11 +13,18 @@ public class snakeGame {
     // constructor //
     // x is head and it is the first index //
     // y is the second position //
+    // 2d boolean array, copy to one game board. (use nested for loop). //
     public snakeGame(boolean [][] A, int x, int y){
-        game = A;
+        // game = A //
+        // setting the board to the array /
+        for(int i = 0; i < A.length; i++){
+            for(int j = 0; j < A[i].length; j++){
+                game[i][j] = A[i][j];
+            }
+        }
         headPosition = new int[2];
-        headPosition[0] = x;
-        headPosition[1] = y;
+        headPosition[0] = x; // head position x//
+        headPosition[1] = y; // head position y//
     }
 
     // make static //
@@ -46,26 +52,33 @@ public class snakeGame {
     // exhChecks-- //
     // exhChecks //
 
+    // checking cells until tail is found //
     public int[] findTailExhaustive() {
-        int counter = 0; // initializing counter, will be used to count how many times we move from one element of the snake to the other to ultimately get the size of the snake. //
-
+        int Ecounter = 0; // initializing counter, will be used to count how many times we move from one element of the snake to the other to ultimately get the size of the snake. //
+        int length = 0; // continue on finding the length of snake //
+        int neighbors = 0; // counts the number of neighbors //
         for(int i = 0; i < game.length; i++){ // this for loop iterates through the rows of the grid //
             for(int j = 0; j < game.length; j++){ // this for loop will iterate through the columns of the grid //
                 if(game[i][j] == true){ // if there is a snake in the coordinates i,j //
-                    if(i == 0 && j == 1){ // and if the the coordinates of i, and j match to the coordinates in 0 and 1. then... //
-                        continue; // continue on to the next
+                    length++;
+                    if(i == 0 && j == 1){ // and if the coordinates of i, and j match to the coordinates in 0 and 1. then... //
+                        headPosition =
                     }
+                    if()
                 }
-
+                else if(game[i][j] == false){
+                    continue; //
+                }
             }
         }
-        return new int[0];
+        return new int[0]; // (x,y,length) //
     }
 
     // length of snake, where my tail is, and to keep track of how many cells ive checked. //
     // 1. reset counters //
     // 2. look at the heads position. //
     // 3. look for their neighbors to trace down the snake and check if its the tail//
+    // head position, both parameters. //
     // no loops in this method. //
     // 4. make sure the neighbor we want to check, is not what we already saw. //
     // 5.
@@ -73,25 +86,40 @@ public class snakeGame {
         int counter = 0;
         for(int i = 0; i < game.length; i++){
             for(int j = 0; j < game.length; j++){
-                if()
+                if(game[i][j] == true){
+                    if(){
+
+                    }
+                }
+                else if(){
+
+                }
             }
         }
-        return new int[0];
+        return new int[0]; // size of 3, (x position of tail, y position of tail, length of snake) //)
     }
 
+    // actually look through snake //
+    // count length of snake //
     private int[] findTailRecursive(int[] currentPosition, int[] previousPosition){
+        return headPosition + headPosition;
         return new int[0];
     }
 
+    // reset counters to 0 //
+    // set both counters equal to zero //
     private void resetCounters(){
-
+        this.findTailExhaustive();
+        this.findTailRecursive();
     }
 
-    private static int getRecursiveChecks(){
+    // getter,
+    public static int getRecursiveChecks(){
         return 0;
     }
 
-    private static int getExhaustiveChecks(){
+    //
+    public static int getExhaustiveChecks(){
         return 0;
     }
 }
