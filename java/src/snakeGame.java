@@ -62,9 +62,19 @@ public class snakeGame {
                 if(game[i][j] == true){ // if there is a snake in the coordinates i,j //
                     length++;
                     if(i == 0 && j == 1){ // and if the coordinates of i, and j match to the coordinates in 0 and 1. then... //
-                        headPosition =
                     }
-                    if()
+                    if(game[i+1][j] == true){
+                        length++;
+                    }
+                    if(game[i-1][j] == true){
+                        length++;
+                    }
+                    if(game[i][j+1] == true){
+                        length++;
+                    }
+                    if(game[i][j-1] == true){
+                        length++;
+                    }
                 }
                 else if(game[i][j] == false){
                     continue; //
