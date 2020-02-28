@@ -131,17 +131,17 @@ public class snakeGame {
     // reset counters to 0 //
     // set both counters equal to zero //
     private void resetCounters(){
-        this.findTailExhaustive();
-        this.findTailRecursive();
+        exhaustiveChecks.reset();
+        recursiveChecks.reset();
     }
 
     // getter,
     public static int getRecursiveChecks(){
-        return 0;
+        return recursiveChecks;
     }
 
     //
     public static int getExhaustiveChecks(){
-        return 0;
+        return exhaustiveChecks;
     }
 }
