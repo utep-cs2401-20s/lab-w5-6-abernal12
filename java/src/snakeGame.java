@@ -54,34 +54,46 @@ public class snakeGame {
 
     // checking cells until tail is found //
     public int[] findTailExhaustive() {
-        int Ecounter = 0; // initializing counter, will be used to count how many times we move from one element of the snake to the other to ultimately get the size of the snake. //
+        int counter = 0; // initializing counter, will be used to count how many times we move from one element of the snake to the other to ultimately get the size of the snake. //
         int length = 0; // continue on finding the length of snake //
         int neighbors = 0; // counts the number of neighbors //
         for(int i = 0; i < game.length; i++){ // this for loop iterates through the rows of the grid //
             for(int j = 0; j < game.length; j++){ // this for loop will iterate through the columns of the grid //
                 if(game[i][j] == true){ // if there is a snake in the coordinates i,j //
-                    length++;
-                    if(i == 0 && j == 1){ // and if the coordinates of i, and j match to the coordinates in 0 and 1. then... //
+                    //length++;
+                    if(i == 0 && j == 1){ // and if the coordinates of i, and j match to the coordinates in 0 and 1. then... set i and j equal to the head //
+                        // set the
                     }
-                    if(game[i+1][j] == true){
-                        length++;
+                    if(game[i+1][j] == true){ // if the cell to the right of the current cell is part of the snake.. //
+                        length++; // then add to the length.. //
+                        neighbors++; // and to the neighbors. //
+                        continue; // continues to proceed to the next element of the array //
                     }
-                    if(game[i-1][j] == true){
-                        length++;
+                    if(game[i-1][j] == true){ // if the cell to the left of the current cell is part of the snake.. //
+                        length++; // then add the cell to the length
+                        neighbors++; // and to the neighbors. //
+                        continue; // continues to proceed to the next element of the array. //
                     }
-                    if(game[i][j+1] == true){
-                        length++;
+                    if(game[i][j+1] == true){ // if cell at the top of the current cell is part of the snake.. //
+                        length++; // then add to the length //
+                        neighbors++; // and add to the neighbors. //
+                        continue; // continues to proceed to the next element of the array. //
                     }
-                    if(game[i][j-1] == true){
-                        length++;
+                    if(game[i][j-1] == true){ //if the cell at the top of the current cell is part of the snake.. //
+                        length++; // then add to the length. //
+                        neighbors++; // and add to the neighbors aswell. //
+                        continue;
                     }
                 }
                 else if(game[i][j] == false){
-                    continue; //
+                    continue; // continues on to the next element of the array if there is not part of the snake in the current element. //
+                }
+                if(game[i][j] == true && game[i+1][j] == true|| game[i][j] == true && game[i-1][j] == true || game[i][j] == true && game[i][j+1] == true || game[i][j] == true && game[i][j-1] == true){
+                    //return ();
                 }
             }
         }
-        return new int[0]; // (x,y,length) //
+        return new int[0]; // return the (x,y,length) //
     }
 
     // length of snake, where my tail is, and to keep track of how many cells ive checked. //
@@ -96,23 +108,23 @@ public class snakeGame {
         int counter = 0;
         for(int i = 0; i < game.length; i++){
             for(int j = 0; j < game.length; j++){
-                if(game[i][j] == true){
-                    if(){
+                //if(game[i][j] == head){
+                   // if(){
 
                     }
                 }
-                else if(){
+                //else if(){
 
-                }
-            }
-        }
+               // }
+           // }
+      //  }
         return new int[0]; // size of 3, (x position of tail, y position of tail, length of snake) //)
     }
 
-    // actually look through snake //
+    // actually looks through snake //
     // count length of snake //
     private int[] findTailRecursive(int[] currentPosition, int[] previousPosition){
-        return headPosition + headPosition;
+        findTailRecursive(headPosition, headPosition);
         return new int[0];
     }
 
