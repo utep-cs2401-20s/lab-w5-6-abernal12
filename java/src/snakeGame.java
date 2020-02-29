@@ -4,6 +4,8 @@ public class snakeGame {
     private int[] headPosition; // size of two, x and y position
     private static int exhaustiveChecks; // static variable means that you only want to refer to only one.
     private static int recursiveChecks;
+    private int exhaustiveCounter;
+    private int recursiveCounter;
 
     // default constructor //
     public snakeGame(){
@@ -54,50 +56,49 @@ public class snakeGame {
 
     // checking cells until tail is found //
     public int[] findTailExhaustive() {
-        //exhaustiveCounter++;
-        int counter = 0;
-        int[] tail = {0, 0, 0};
+        exhaustiveCounter++;
+        int[] result = {0, 0, 0};
         int neighbors = 0; // counts the number of neighbors //
         for (int i = 0; i < game.length; i++) { // this for loop iterates through the rows of the grid //
             for (int j = 0; j < game.length; j++) { // this for loop will iterate through the columns of the grid //
                 neighbors = 0;
-                if (game[i][j] == true) { // if there is a snake in the coordinates i,j //
-                    tail[2]++;
+                if (game[i][j]) { // if there is a snake in the coordinates i,j //
+                    result[2]++;
                     if ((i - 1 > -1) && (j - 1 > -1) && (i + 1 <= game.length - 1) && (j + 1 <= game.length - 1)) {
-
-                    }
-                    if (game[i + 1][j] == true) { // if the cell to the right of the current cell is part of the snake.. //
-                        //length++; // then add to the length.. //
-                        neighbors++; // and to the neighbors. //
-                        continue; // continues to proceed to the next element of the array //
-                    }
-                    if (game[i - 1][j] == true) { // if the cell to the left of the current cell is part of the snake.. //
-                        //length++; // then add the cell to the length
-                        neighbors++; // and to the neighbors. //
-                        continue; // continues to proceed to the next element of the array. //
-                    }
-                    if (game[i][j + 1] == true) { // if cell at the top of the current cell is part of the snake.. //
-                        //length++; // then add to the length //
-                        neighbors++; // and add to the neighbors. //
-                        continue; // continues to proceed to the next element of the array. //
-                    }
-                    if (game[i][j - 1] == true) { //if the cell at the top of the current cell is part of the snake.. //
-                        //length++; // then add to the length. //
-                        neighbors++; // and add to the neighbors aswell. //
-                        continue;
+                        neighbors++;
+                        if (game[i + 1][j] == true) { // if the cell to the right of the current cell is part of the snake.. //
+                            //length++; // then add to the length.. //
+                            neighbors++; // and to the neighbors. //
+                            continue; // continues to proceed to the next element of the array //
+                        }
+                        if (game[i - 1][j] == true) { // if the cell to the left of the current cell is part of the snake.. //
+                            //length++; // then add the cell to the length
+                            neighbors++; // and to the neighbors. //
+                            continue; // continues to proceed to the next element of the array. //
+                        }
+                        if (game[i][j + 1] == true) { // if cell at the top of the current cell is part of the snake.. //
+                            //length++; // then add to the length //
+                            neighbors++; // and add to the neighbors. //
+                            continue; // continues to proceed to the next element of the array. //
+                        }
+                        if (game[i][j - 1] == true) { //if the cell at the top of the current cell is part of the snake.. //
+                            // length++; // then add to the length. //
+                            neighbors++; // and add to the neighbors aswell. //
+                            continue;
+                        }
                     } else if (game[i][j] == false) {
                         exhaustiveChecks++;
                         continue; // continues on to the next element of the array if there is not part of the snake in the current element. //
                     }
                     if (i != headPosition[0] && j != headPosition[1] && neighbors == 1) {
                         //9.Tail Found assign the x and y elements to each index of array.
-                        tail[0] = i;
-                        tail[1] = j;
+                        result[0] = i;
+                        result[1] = j;
                     }
                 }
             }
         }
-        return tail;
+        return result;
     }
 
     // length of snake, where my tail is, and to keep track of how many cells ive checked. //
@@ -113,7 +114,8 @@ public class snakeGame {
         int length = 0;
         // looking at heads position. //
         // look for neighbors to trace down the snake //
-        //if(neighbors == 1)// check to see if its the tail
+        //if(findTailExhaustive() == )// check to see if its the tail
+            //return tail;
             //game[i][j] = tail;
                 //if(game[i][j] == head){
                    // if(){
@@ -137,7 +139,8 @@ public class snakeGame {
     // reset counters to 0 //
     // set both counters equal to zero //
     private void resetCounters(){
-        //exhaustiveChecks.reset();
+        exhaustiveCounter = 0;
+        recursiveCounter = 0;
         //recursiveChecks.reset();
     }
 
