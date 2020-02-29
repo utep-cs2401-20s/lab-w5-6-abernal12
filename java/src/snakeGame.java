@@ -54,46 +54,50 @@ public class snakeGame {
 
     // checking cells until tail is found //
     public int[] findTailExhaustive() {
-        int counter = 0; // initializing counter, will be used to count how many times we move from one element of the snake to the other to ultimately get the size of the snake. //
-        int length = 0; // continue on finding the length of snake //
+        //exhaustiveCounter++;
+        int counter = 0;
+        int[] tail = {0, 0, 0};
         int neighbors = 0; // counts the number of neighbors //
-        for(int i = 0; i < game.length; i++){ // this for loop iterates through the rows of the grid //
-            for(int j = 0; j < game.length; j++){ // this for loop will iterate through the columns of the grid //
-                if(game[i][j] == true){ // if there is a snake in the coordinates i,j //
-                    //length++;
-                    if(i == 0 && j == 1){ // and if the coordinates of i, and j match to the coordinates in 0 and 1. then... set i and j equal to the head //
-                        // set the
+        for (int i = 0; i < game.length; i++) { // this for loop iterates through the rows of the grid //
+            for (int j = 0; j < game.length; j++) { // this for loop will iterate through the columns of the grid //
+                neighbors = 0;
+                if (game[i][j] == true) { // if there is a snake in the coordinates i,j //
+                    tail[2]++;
+                    if ((i - 1 > -1) && (j - 1 > -1) && (i + 1 <= game.length - 1) && (j + 1 <= game.length - 1)) {
+
                     }
-                    if(game[i+1][j] == true){ // if the cell to the right of the current cell is part of the snake.. //
-                        length++; // then add to the length.. //
+                    if (game[i + 1][j] == true) { // if the cell to the right of the current cell is part of the snake.. //
+                        //length++; // then add to the length.. //
                         neighbors++; // and to the neighbors. //
                         continue; // continues to proceed to the next element of the array //
                     }
-                    if(game[i-1][j] == true){ // if the cell to the left of the current cell is part of the snake.. //
-                        length++; // then add the cell to the length
+                    if (game[i - 1][j] == true) { // if the cell to the left of the current cell is part of the snake.. //
+                        //length++; // then add the cell to the length
                         neighbors++; // and to the neighbors. //
                         continue; // continues to proceed to the next element of the array. //
                     }
-                    if(game[i][j+1] == true){ // if cell at the top of the current cell is part of the snake.. //
-                        length++; // then add to the length //
+                    if (game[i][j + 1] == true) { // if cell at the top of the current cell is part of the snake.. //
+                        //length++; // then add to the length //
                         neighbors++; // and add to the neighbors. //
                         continue; // continues to proceed to the next element of the array. //
                     }
-                    if(game[i][j-1] == true){ //if the cell at the top of the current cell is part of the snake.. //
-                        length++; // then add to the length. //
+                    if (game[i][j - 1] == true) { //if the cell at the top of the current cell is part of the snake.. //
+                        //length++; // then add to the length. //
                         neighbors++; // and add to the neighbors aswell. //
                         continue;
+                    } else if (game[i][j] == false) {
+                        exhaustiveChecks++;
+                        continue; // continues on to the next element of the array if there is not part of the snake in the current element. //
                     }
-                }
-                else if(game[i][j] == false){
-                    continue; // continues on to the next element of the array if there is not part of the snake in the current element. //
-                }
-                if(game[i][j] == true && game[i+1][j] == true|| game[i][j] == true && game[i-1][j] == true || game[i][j] == true && game[i][j+1] == true || game[i][j] == true && game[i][j-1] == true){
-                    //return ();
+                    if (i != headPosition[0] && j != headPosition[1] && neighbors == 1) {
+                        //9.Tail Found assign the x and y elements to each index of array.
+                        tail[0] = i;
+                        tail[1] = j;
+                    }
                 }
             }
         }
-        return new int[0]; // return the (x,y,length) //
+        return tail;
     }
 
     // length of snake, where my tail is, and to keep track of how many cells ive checked. //
@@ -105,14 +109,16 @@ public class snakeGame {
     // 4. make sure the neighbor we want to check, is not what we already saw. //
     // 5.
     public int[] findTailRecursive(){
-        int counter = 0;
-        for(int i = 0; i < game.length; i++){
-            for(int j = 0; j < game.length; j++){
+        int counter = 0; // reset counter. //
+        int length = 0;
+        // looking at heads position. //
+        // look for neighbors to trace down the snake //
+        //if(neighbors == 1)// check to see if its the tail
+            //game[i][j] = tail;
                 //if(game[i][j] == head){
                    // if(){
 
-                    }
-                }
+                    //}
                 //else if(){
 
                // }
@@ -131,8 +137,8 @@ public class snakeGame {
     // reset counters to 0 //
     // set both counters equal to zero //
     private void resetCounters(){
-        exhaustiveChecks.reset();
-        recursiveChecks.reset();
+        //exhaustiveChecks.reset();
+        //recursiveChecks.reset();
     }
 
     // getter,
@@ -140,7 +146,7 @@ public class snakeGame {
         return recursiveChecks;
     }
 
-    //
+    // getter,
     public static int getExhaustiveChecks(){
         return exhaustiveChecks;
     }
