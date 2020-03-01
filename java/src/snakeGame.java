@@ -83,7 +83,7 @@ public class snakeGame {
                         }
                         if (game[i][j - 1] == true) { //if the cell at the top of the current cell is part of the snake.. //
                             // length++; // then add to the length. //
-                            neighbors++; // and add to the neighbors aswell. //
+                            neighbors++; // and add to the neighbors as well. //
                             continue;
                         }
                     } else if (game[i][j] == false) {
@@ -91,7 +91,7 @@ public class snakeGame {
                         continue; // continues on to the next element of the array if there is not part of the snake in the current element. //
                     }
                     if (i != headPosition[0] && j != headPosition[1] && neighbors == 1) {
-                        //9.Tail Found assign the x and y elements to each index of array.
+                        // Tail Found assign the x and y elements to each index of array.
                         result[0] = i;
                         result[1] = j;
                     }
@@ -111,22 +111,17 @@ public class snakeGame {
     // 5.
     public int[] findTailRecursive(){
         int counter = 0; // reset counter. //
-        int length = 0;
+        int [] r = {0, 0, 0};
+        recursiveCounter++;
         // looking at heads position. //
         // look for neighbors to trace down the snake //
-        //if(findTailExhaustive() == )// check to see if its the tail
-            //return tail;
-            //game[i][j] = tail;
-                //if(game[i][j] == head){
-                   // if(){
-
-                    //}
-                //else if(){
-
-               // }
-           // }
-      //  }
-        return new int[0]; // size of 3, (x position of tail, y position of tail, length of snake) //)
+        //if(reached base case condition goes here)// check to see if its the tail
+             //return what I need to return
+        //return my recursive method(mynewparameters)
+        if(findTailExhaustive() ==  r){ // check to see if its the tail
+            return r;
+        }
+        return findTailExhaustive(); // size of 3, (x position of tail, y position of tail, length of snake) //)
     }
 
     // actually looks through snake //
